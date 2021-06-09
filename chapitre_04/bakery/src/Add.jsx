@@ -1,11 +1,15 @@
 import React from 'react'
+import { Button } from 'react-bootstrap';
+import { InputGroup } from 'react-bootstrap';
+import { FormControl } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 
 class Add extends React.Component {
     constructor(props){
         super(props);
         this.state={
             productName:"",
-            price: 1,
+            price: 5,
         }
         this.updateProductName= this.updateProductName.bind(this)
         this.updatePrice = this.updatePrice.bind(this)
@@ -21,10 +25,12 @@ class Add extends React.Component {
     render(){
         return(
             <div>
-            <input required type="text" onChange={this.updateProductName}/>
-            <button onClick={()=>this.props.additem(this.state.productName, this.state.price)}>Add</button>
-            <br />
-            <input type="range" min={1} max={10} onChange={this.updatePrice}/>
+            <InputGroup className="mb-3">
+            <FormControl required type="text" onChange={this.updateProductName} placeholder="Item"/>
+            <Button variant="primary" onClick={()=>{this.props.additem(this.state.productName, this.state.price); this.props.swiftToList();}}>Add</Button>
+            <FormControl type="range" min={0} max={10} onChange={this.updatePrice}/>
+            <Form.Label>{this.state.price}€</Form.Label>
+            </InputGroup>
             </div>
         )
     }

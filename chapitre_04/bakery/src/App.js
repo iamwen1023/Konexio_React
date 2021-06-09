@@ -7,6 +7,7 @@ import Pay from './Pay';
 import Add from './Add';
 
 
+
 class App extends React.Component {
   constructor(props){
     super(props);
@@ -39,7 +40,7 @@ class App extends React.Component {
   rendreItem(activeTab){
     console.log(this.state.activeTab);
     if (activeTab === "add")
-      return <Add additem={this.addItem}/>;
+      return <Add additem={this.addItem} swiftToList={this.selectList}/>;
     else if (activeTab  === "list")
       return <List list={this.state.items} updatelist={this.deleteItme}/>;
     else if (activeTab  === "pay")
