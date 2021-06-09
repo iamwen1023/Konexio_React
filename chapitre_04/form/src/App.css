@@ -39,8 +39,5 @@
 .form{
   width: 500px;
   height: auto;
-  display: flex;
-  justify-content:center;
-  flex-direction:column;
 
 }
