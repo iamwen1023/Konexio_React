@@ -16,8 +16,22 @@ class App extends React.Component {
     this.getCountry = this.getCountry.bind(this)
   }
   getCountry(country){
+    let url = "https://restcountries.eu/rest/v2/name/" + country;
+    fetch(url)
+    .then(res => res.json())
+	  .then(result => {
+		this.setState({ 
+      name : result[0].name,
+      capital : result[0].capital,
+      flag : result[0].flag,
+      population : result[0].population,
+      region : result[0].region,
+    });
+	  })
+	  .catch(error => console.error(error));
+  }
+  getCountryBack(country){
     let url = "http://localhost:3003/" + country;
-    console.log(url);
     fetch(url)
     .then(res => res.json())
 	  .then(result => {
@@ -35,10 +49,6 @@ class App extends React.Component {
   componentDidMount(){
     this.getCountry("France");
   }
-
-
-
-
   render(){
   return (
     <div className="App">
