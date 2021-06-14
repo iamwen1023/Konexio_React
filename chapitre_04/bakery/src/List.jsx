@@ -25,7 +25,7 @@ class List extends React.Component {
     render(){
         return(
             <div>
-            {this.props.list? this.renderEmpty () : this.renderList() }
+            {this.props.list === null? this.renderEmpty() : this.renderList() }
             </div>
         )
     }
