@@ -14,6 +14,7 @@ class App extends React.Component {
     this.state={
       activeTab: 'add',
       items: [],
+      image: '../public/img/item.png',
     }
     this.selectAdd = this.selectAdd.bind(this)
     this.selectList = this.selectList.bind(this)
@@ -44,7 +45,7 @@ class App extends React.Component {
     else if (activeTab  === "list")
       return <List list={this.state.items} updatelist={this.deleteItme}/>;
     else if (activeTab  === "pay")
-      return <Pay />;
+      return <Pay items={this.state.items} />;
   }
   addItem(name,price){
     console.log("hello");

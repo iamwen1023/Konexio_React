@@ -13,7 +13,7 @@ class List extends React.Component {
                 <ListGroup>
             {this.props.list.map((number, index) =>
 
-                <ListGroup.Item className="d-flex justify-content-between" >{number.name} : {number.price}€  
+                <ListGroup.Item className="d-flex justify-content-between" key={index} >{number.name} : {number.price}€  
                 <Button onClick={()=> this.props.updatelist(index)}>Delete</Button>
                 </ListGroup.Item>   
                 
