@@ -16,11 +16,11 @@ class Add extends React.Component {
     }
     updateProductName(e){
         this.setState({productName:e.target.value})
-        console.log(e.target.value);
+        //console.log(e.target.value);
     }
     updatePrice (e){
         this.setState({price:e.target.value})
-        console.log(e.target.value);
+        //console.log(e.target.value);
     }
     render(){
         return(
