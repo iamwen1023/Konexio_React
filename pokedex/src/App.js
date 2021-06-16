@@ -1,5 +1,6 @@
 import React from 'react'
 import './App.css';
+import List from './List'
 
 class App extends React.Component {
   constructor(props){
@@ -50,9 +51,9 @@ class App extends React.Component {
             </div>
           </div>
         </div>
-        <di>
-
-        </di>
+        <div>
+        <List />
+        </div>
       </div>
     )
   }
