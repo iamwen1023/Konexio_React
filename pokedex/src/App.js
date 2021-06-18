@@ -12,17 +12,19 @@ class App extends React.Component {
       photo: "",
       type: [],
     }
+    this.getDetailInfo = this.getDetailInfo.bind(this);
   }
-
-  async componentDidMount(){
+  async getDetailInfo(index){
+    console.log("i click :", index);
     try{
-      const link = await fetch('https://pokeapi.co/api/v2/pokemon/1/')
+      let url = 'https://pokeapi.co/api/v2/pokemon/' + index;
+      const link = await fetch(url)
       const result =  await link.json()
-      const photoLink = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
-      console.log(result);
+      const photoLink = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" + index+".png";
+      //console.log(result);
       let arr = [];
       result.types.map(x => arr.push(x.type.name));
-      console.log("arry",arr);
+      //console.log("arry",arr);
       this.setState({
         name : result.name,
         height: result.height,
@@ -30,10 +32,13 @@ class App extends React.Component {
         type: arr.join(" "),
         photo: photoLink,
       })
-      console.log(this.state);
+      //console.log(this.state);
     }catch(error){
       console.error(error)
     }
+  }
+  async componentDidMount(){
+    this.getDetailInfo(1);
   }
   render(){
     return (
@@ -52,7 +57,7 @@ class App extends React.Component {
           </div>
         </div>
         <div>
-        <List />
+        <List getInfo={this.getDetailInfo} />
         </div>
       </div>
     )
