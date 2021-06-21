@@ -39,6 +39,7 @@ class List extends React.Component {
             arr: [...this.state.arr, [nameItem,urlPhoto]],
         })
     }
+    Promise.all([...newarray(20)].map((_,i)=>fetch(``)))
     console.log("this.state.arr",this.state.arr );
   }
  
