@@ -51,6 +51,9 @@ class PopularBattle extends React.Component {
         this.setState({
             currentBattle: this.state.currentBattle+2,
         })
+        if (this.state.currentBattle === 18) {
+            alert('Vous avez parcouru tous les films !')
+        }
         this.addFavorite(index);
     }
    

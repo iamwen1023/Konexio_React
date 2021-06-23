@@ -6,9 +6,11 @@ const API_KEY = 'b8e16ff25f44004fe2ab5dedc9e0453e'
 class Favorites extends React.Component {
     constructor(props){
         super(props)
+        const favorites_P = localStorage.favoritesPopular? JSON.parse(localStorage.favoritesPopular): []
+        const favorites_Weekly = localStorage.favoritesWeekly? JSON.parse(localStorage.favoritesWeekly):[]
         this.state = {
-            favorites_P : JSON.parse(localStorage.favoritesPopular),
-            favorites_Weekly :JSON.parse(localStorage.favoritesWeekly),
+            favorites_P,
+            favorites_Weekly,
             listMovie_P:[],
             listMovie_Weekly:[],
         }
@@ -37,7 +39,8 @@ class Favorites extends React.Component {
         .catch(error => console.error(error))
     }
     renderInfo(){
-        if (this.state.listMovie_Weekly && this.state.listMovie_P){
+        console.log("this", this.state)
+        if (this.state.listMovie_Weekly.length && this.state.listMovie_P.length){
         return (
         <div>
             <div className="row">
