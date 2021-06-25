@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
 import Login from "./Login";
 import Userlist from "./Userlist";
@@ -8,6 +8,9 @@ import { UserContext } from './UserContext'
 
 function App () {
   const [user, setUser] = useState("")
+  useEffect(() => {
+    console.log("username IN APP", user)
+  });
   return (
     <BrowserRouter>
     <UserContext.Provider value={user}>
@@ -21,11 +24,11 @@ function App () {
             </ul>
           </nav>
 
-          <Switch> {/* Ce composant ne s'affichera pas à l'écran, il liste les chemins possibles */}
-            <Route setuser={setUser} exact path="/" component={Login}/> {/* Chaque route est un composant <Route> */}
-						<Route path="/userlist" component={Userlist}/>
-            <Route path="/userprofile" component={UserProfile}/>
-						<Route path="*" component={PageNotFound}/>
+          <Switch> 
+          <Route exact path="/"><Login setuser={setUser}/> </Route>
+						<Route path="/userlist" ><Userlist /></Route>
+            <Route path="/userprofile"> <UserProfile /> </Route>
+						<Route path="*"> <PageNotFound/> </Route>
           </Switch>
         </div>
         </UserContext.Provider>

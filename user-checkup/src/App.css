@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  padding: 5px, 5px, 5px, 5px;
 }
 
 .App-logo {
@@ -39,4 +40,11 @@
 .form{
   width: 50%;
   height: auto;
+}
+.userlist{
+  width: 100%;
+  height: auto;
+}
+div {
+  padding: 10px, 10px, 10px, 10px;
 }

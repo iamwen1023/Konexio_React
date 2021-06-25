@@ -1,9 +1,11 @@
 import React from "react";
 import './App.css';
+import { withRouter } from 'react-router';
 
 class Login extends React.Component {
     constructor(props){
         super(props);
+        console.log(props);
         this.state={
             userlist:[],
             username: "",
@@ -28,14 +30,15 @@ class Login extends React.Component {
             console.error(error);
         }  
     }
-    componentDidUpdate(prevProps, prevState){
-        console.log("username", this.state.username);
-        console.log("password", this.state.password);
-    }
+    // componentDidUpdate(prevProps, prevState){
+    //     console.log("username", this.state.username);
+    //     console.log("password", this.state.password);
+    // }
     faireRedirection=()=> {
         this.props.history.push("/userlist");
       }
-    checkLogin(){
+    checkLogin(event){
+        event.preventDefault();
         let checekName = this.state.userlist.find(element=> element.username ===this.state.username);
         if (checekName === undefined)
             this.setState({warningName : true});
@@ -44,6 +47,7 @@ class Login extends React.Component {
             this.setState({warningPassword :true});
         if (checekName && checekPassword)
         {
+            this.props.setuser(checekName.username);
             this.faireRedirection();
         }
     }
@@ -70,4 +74,4 @@ class Login extends React.Component {
 }
 }
 
-export default Login;
+export default withRouter(Login);
