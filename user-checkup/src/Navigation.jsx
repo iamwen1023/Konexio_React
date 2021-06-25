@@ -9,7 +9,7 @@ function Navigation() {
     <nav className="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
         <div className="navbar-nav">
         <a className="nav-item nav-link active" href="/">Login</a>
-        <a className="nav-item nav-link" href="./userlist">Userlist</a>
+        <a className="nav-item nav-link" href="/userlist">Userlist</a>
         </div>
         <p className="">Connecté avec {username}</p>
     </nav>
